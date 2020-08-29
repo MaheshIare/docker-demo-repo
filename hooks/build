@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=$(mvn -q help:evaluate -Dexpression=project.version -DforceStdout=true)
+VERSION=${project.version}
 echo "POM Version: $VERSION"
 
 echo "------ HOOK START - BUILD -------"
