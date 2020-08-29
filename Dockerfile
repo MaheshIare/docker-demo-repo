@@ -6,7 +6,7 @@ RUN git clone ${url}
 FROM maven:3.5-jdk-8-alpine
 ARG project-name 
 WORKDIR /app
-COPY --from=0 /app/${project} /app
+COPY --from=0 /app/${project-name} /app
 RUN mvn install -Dmaven.test.skip=true
 
 FROM openjdk:8-jre-alpine
