@@ -9,14 +9,15 @@ ARG projectname
 RUN echo "Project name in docker file: ${projectname}"
 WORKDIR /app
 COPY --from=0 /app/${projectname} /app
+ENV VERSION $(mvn -q help:evaluate -Dexpression=project.version -DforceStdout=true)
+RUN echo "POM Version: ${VERSION}"
 RUN mvn install -Dmaven.test.skip=true
 
 FROM openjdk:8-jre-alpine
 ARG artifactid
-ARG version
 RUN echo "Artifact id in docker file: ${artifactid}"
-RUN echo "Version id in docker file: ${version}"
-ENV finalartifact ${artifactid}-${version}.jar 
+RUN echo "Version id in docker file: ${VERSION}"
+ENV finalartifact ${artifactid}-${VERSION}.jar 
 WORKDIR /app
 COPY --from=1 /app/target/${finalartifact} /app
 
