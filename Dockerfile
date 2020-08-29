@@ -1,10 +1,9 @@
 
-FROM alpine/git as clone (1)
+FROM alpine/git
 WORKDIR /app
 RUN git clone https://github.com/MaheshIare/docker-demo-repo.git
 
-FROM maven:3.5-jdk-8-alpine as build (2)
+FROM maven:3.5-jdk-8-alpine
 WORKDIR /app
-COPY --from=clone /app/docker-demo-app /app (3)
-
-RUN mvn install -Dmaven.skip.test=true (4)
+COPY --from=0 /app/docker-demo-app /app
+RUN mvn install -Dmaven.skip.test=true
