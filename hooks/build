@@ -2,9 +2,9 @@
 
 echo "------ HOOK START - BUILD -------"
 
-docker build --build-arg url=https://github.com/MaheshIare/docker-demo-repo.git\
-  --build-arg project-name=$PROJECT_NAME\
-  --build-arg artifact-id=$ARTIFACT_ID\
+docker build --build-arg giturl=https://github.com/MaheshIare/docker-demo-repo.git\
+  --build-arg projectname=$PROJECT_NAME\
+  --build-arg artifactid=$ARTIFACT_ID\
   --build-arg version=$VERSION\
   -t maheshiare/$PROJECT_NAME - < Dockerfile
 

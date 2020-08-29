@@ -1,24 +1,23 @@
 FROM alpine/git
-ARG url 
+ARG giturl 
 WORKDIR /app
-RUN git clone ${url} 
-
+RUN git clone ${giturl} 
 RUN echo "GIT URL in docker file: ${url}"
 
 FROM maven:3.5-jdk-8-alpine
-ARG project-name 
-RUN echo "Project name in docker file: ${project-name}"
+ARG projectname 
+RUN echo "Project name in docker file: ${projectname}"
 WORKDIR /app
-COPY --from=0 /app/${project-name} /app
+COPY --from=0 /app/${projectname} /app
 RUN mvn install -Dmaven.test.skip=true
 
 FROM openjdk:8-jre-alpine
-ARG artifact-id
+ARG artifactid
 ARG version
-RUN echo "Artifact id in docker file: ${artifact-id}"
+RUN echo "Artifact id in docker file: ${artifactid}"
 RUN echo "Version id in docker file: ${version}"
-ENV final-artifact ${artifact-id}-${version}.jar 
+ENV finalartifact ${artifactid}-${version}.jar 
 WORKDIR /app
-COPY --from=1 /app/target/${final-artifact} /app
+COPY --from=1 /app/target/${finalartifact} /app
 
-RUN echo "Final artifact in docker file: ${final-artifact}"
+RUN echo "Final artifact in docker file: ${finalartifact}"
