@@ -9,7 +9,9 @@ ARG projectname
 RUN echo "Project name in docker file: ${projectname}"
 WORKDIR /app
 COPY --from=0 /app/${projectname} /app
-ENV VERSION $(mvn -q help:evaluate -Dexpression=project.version -DforceStdout=true)
+RUN VERSIONID="$(mvn -q help:evaluate -Dexpression=project.version -DforceStdout=true)"
+RUN echo "VERSIONID: ${VERSIONID}"
+ENV VERSION ${VERSIONID} 
 RUN echo "POM Version: ${VERSION}"
 RUN mvn install -Dmaven.test.skip=true
 
