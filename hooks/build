@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo "------ HOOK START - BUILD -------"
-printenv
 
 docker build --build-arg url=https://github.com/MaheshIare/docker-demo-repo.git\
   --build-arg project-name=$PROJECT_NAME\
@@ -17,4 +16,7 @@ echo "Docker repo: ${DOCKER_REPO}"
 echo "Docker file path: ${DOCKERFILE_PATH}"
 echo "Docker tag: ${DOCKER_TAG}"
 echo "Docke image name: ${IMAGE_NAME}"
+echo "Project name: ${PROJECT_NAME}"
+echo "Artifact id: ${ARTIFACT_ID}"
+echo "Version: ${VERSION}"
 echo "------ HOOK END   - BUILD -------"
