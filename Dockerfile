@@ -14,8 +14,12 @@ ARG version
 WORKDIR /app
 COPY --from=1 /app/target/docker-demo-repo-0.0.1.jar /app
 
-RUN echo "parent pom version: ${parent.version}"
-RUN echo "parent artifact id : ${parent.artifactId}"
 RUN echo "Artifact id: ${artifactid}"
 RUN echo "Version: ${version}"
 RUN echo "project: ${project}"
+
+docker push maheshiare/docker-demo-repo:0.0.1
+
+RUN echo "parent pom version: ${parent.version}"
+RUN echo "parent artifact id : ${parent.artifactId}"
+
