@@ -19,7 +19,7 @@
 	</parent>
 	<groupId>com.docker.demo</groupId>
 	<artifactId>docker-demo-repo</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<name>docker-demo-repo</name>
 	<description>Demo spring boot project for experimenting with docker</description>
 
