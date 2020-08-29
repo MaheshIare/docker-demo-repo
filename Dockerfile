@@ -2,7 +2,7 @@ FROM alpine/git
 ARG giturl 
 WORKDIR /app
 RUN git clone ${giturl} 
-RUN echo "GIT URL in docker file: ${url}"
+RUN echo "GIT URL in docker file: ${giturl}"
 
 FROM maven:3.5-jdk-8-alpine
 ARG projectname 
