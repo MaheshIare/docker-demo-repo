@@ -1,6 +1,5 @@
-POM_VERSION=$(mvn -q help:evaluate -Dexpression=project.version -DforceStdout=true)
-RUN echo "POM Version: $POM_VERSION"
 RUN echo "parent pom version: ${parent.version}"
+RUN echo "parent artifact id : ${parent.artifactId}"
 
 FROM alpine/git
 WORKDIR /app
@@ -14,6 +13,5 @@ RUN mvn install -Dmaven.skip.test=true
 
 FROM openjdk:8-jre-alpine
 ARG artifactid
-ARG version 
 WORKDIR /app
-COPY --from=1 /app/target/${artifactid}-${POM_VERSION}.jar /app
+COPY --from=1 /app/target/${artifactid}-${parent.version}.jar /app
