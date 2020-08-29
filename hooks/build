@@ -1,0 +1,5 @@
+docker build --build-arg url=https://github.com/MaheshIare/docker-demo-repo.git\
+  --build-arg project-name=$PROJECT_NAME\
+  --build-arg artifact-id=$ARTIFACT_ID\
+  --build-arg version=$VERSION\
+  -t maheshiare/$PROJECT_NAME - < Dockerfile
