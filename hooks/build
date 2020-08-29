@@ -1,5 +1,8 @@
 #!/bin/bash
 
+VERSION=$(mvn -q help:evaluate -Dexpression=project.version -DforceStdout=true)
+echo "POM Version: $VERSION"
+
 echo "------ HOOK START - BUILD -------"
 
 docker build --build-arg giturl=https://github.com/MaheshIare/docker-demo-repo.git\
