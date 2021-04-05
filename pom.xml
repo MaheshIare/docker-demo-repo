@@ -17,7 +17,7 @@
 		<version>2.0.8.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.docker.demo</groupId>
+	<groupId>com.java.techhub</groupId>
 	<artifactId>docker-demo-repo</artifactId>
 	<version>0.0.1</version>
 	<name>docker-demo-repo</name>
